@@ -16,23 +16,13 @@ from rest_framework_simplejwt.tokens import AccessToken
 from reviews.models import Category, Genre, Review, Title
 from users.models import User
 
-from .permissions import (
-    IsAdminOrReadOnly,
-    IsAdminUser,
-    IsStaffOrAuthorOrReadOnly,
-)
-from .serializers import (
-    CategorySerializer,
-    CommentSerializer,
-    CustomTokenSerializer,
-    GenreSerializer,
-    MeUserSerializer,
-    ReviewSerializer,
-    SignUpSerializer,
-    TitleSerializerRead,
-    TitleSerializerWrite,
-    UserSerializer,
-)
+from .permissions import (IsAdminOrReadOnly, IsAdminUser,
+                          IsStaffOrAuthorOrReadOnly)
+from .serializers import (CategorySerializer, CommentSerializer,
+                          CustomTokenSerializer, GenreSerializer,
+                          MeUserSerializer, ReviewSerializer, SignUpSerializer,
+                          TitleSerializerRead, TitleSerializerWrite,
+                          UserSerializer)
 from .viewsets import CreateListDestroyViewSet
 
 
