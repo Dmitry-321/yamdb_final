@@ -1,7 +1,6 @@
 from api.filters import TitleFilter
 from django.conf import settings
-from django.contrib.auth.tokens import \
-    default_token_generator as code_generator
+from django.contrib.auth.tokens import default_token_generator
 from django.db.models import Avg
 from django.shortcuts import get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
@@ -136,7 +135,7 @@ class SignUpView(APIView):
         serializer.is_valid(raise_exception=True)
         user = serializer.save()
 
-        confirmation_code = code_generator.make_token(user)
+        confirmation_code = default_token_generator.make_token(user)
         self._send_confirmation_code_to_user_email(user, confirmation_code)
 
         return Response(serializer.data, status=status.HTTP_200_OK)
@@ -156,7 +155,7 @@ class CustomTokenView(APIView):
         username = serializer.validated_data.get("username")
         confirmation_code = serializer.validated_data.get("confirmation_code")
         user = get_object_or_404(User, username=username)
-        if not code_generator.check_token(user=user, token=confirmation_code):
+        if not default_token_generator.check_token(user=user, token=confirmation_code):
             raise ValidationError({"detail": "Неверный код подтвержения!"})
         token = AccessToken.for_user(user)
         return Response({"token": str(token)})
