@@ -16,13 +16,23 @@ from rest_framework_simplejwt.tokens import AccessToken
 from reviews.models import Category, Genre, Review, Title
 from users.models import User
 
-from .permissions import (IsAdminOrReadOnly, IsAdminUser,
-                          IsStaffOrAuthorOrReadOnly)
-from .serializers import (CategorySerializer, CommentSerializer,
-                          CustomTokenSerializer, GenreSerializer,
-                          MeUserSerializer, ReviewSerializer, SignUpSerializer,
-                          TitleSerializerRead, TitleSerializerWrite,
-                          UserSerializer)
+from .permissions import (
+    IsAdminOrReadOnly,
+    IsAdminUser,
+    IsStaffOrAuthorOrReadOnly,
+)
+from .serializers import (
+    CategorySerializer,
+    CommentSerializer,
+    CustomTokenSerializer,
+    GenreSerializer,
+    MeUserSerializer,
+    ReviewSerializer,
+    SignUpSerializer,
+    TitleSerializerRead,
+    TitleSerializerWrite,
+    UserSerializer,
+)
 from .viewsets import CreateListDestroyViewSet
 
 
@@ -155,7 +165,9 @@ class CustomTokenView(APIView):
         username = serializer.validated_data.get("username")
         confirmation_code = serializer.validated_data.get("confirmation_code")
         user = get_object_or_404(User, username=username)
-        if not default_token_generator.check_token(user=user, token=confirmation_code):
+        if not default_token_generator.check_token(
+            user=user, token=confirmation_code
+        ):
             raise ValidationError({"detail": "Неверный код подтвержения!"})
         token = AccessToken.for_user(user)
         return Response({"token": str(token)})
