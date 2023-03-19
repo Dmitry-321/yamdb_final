@@ -1,8 +1,7 @@
 from api.filters import TitleFilter
 from django.conf import settings
-from django.contrib.auth.tokens import (
-    default_token_generator as code_generator,
-)
+from django.contrib.auth.tokens import \
+    default_token_generator as code_generator
 from django.db.models import Avg
 from django.shortcuts import get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
@@ -18,23 +17,13 @@ from rest_framework_simplejwt.tokens import AccessToken
 from reviews.models import Category, Genre, Review, Title
 from users.models import User
 
-from .permissions import (
-    IsAdminOrReadOnly,
-    IsAdminUser,
-    IsStaffOrAuthorOrReadOnly,
-)
-from .serializers import (
-    CategorySerializer,
-    CommentSerializer,
-    CustomTokenSerializer,
-    GenreSerializer,
-    MeUserSerializer,
-    ReviewSerializer,
-    SignUpSerializer,
-    TitleSerializerRead,
-    TitleSerializerWrite,
-    UserSerializer,
-)
+from .permissions import (IsAdminOrReadOnly, IsAdminUser,
+                          IsStaffOrAuthorOrReadOnly)
+from .serializers import (CategorySerializer, CommentSerializer,
+                          CustomTokenSerializer, GenreSerializer,
+                          MeUserSerializer, ReviewSerializer, SignUpSerializer,
+                          TitleSerializerRead, TitleSerializerWrite,
+                          UserSerializer)
 from .viewsets import CreateListDestroyViewSet
 
 
