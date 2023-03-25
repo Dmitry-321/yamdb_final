@@ -53,5 +53,5 @@ python3 manage.py runserver
 Примеры запросов доступны в документации по адресу http://127.0.0.1:8000/redoc/ после запуска проекта.
 
 ### yamdb_final
-![yamdb_workflow](https://github.com/Dmitry-321/yamdb_final/tree/master/.github/workflows/yamdb_workflow.yml/badge.svg)
+![yamdb_workflow](https://github.com/Dmitry-321/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg)
 
