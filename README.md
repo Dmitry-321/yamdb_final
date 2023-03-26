@@ -55,3 +55,6 @@ python3 manage.py runserver
 ### yamdb_final
 ![yamdb_workflow](https://github.com/Dmitry-321/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg)
 
+### Ссылка на сайт
+http://51.250.109.223/admin/
+
